@@ -23,16 +23,21 @@ app.get('/', function (req, res) {
 })
 
 app.post('/register', async (req,res)=>{
-    const {name, email, password} = req.body;
+    // const {name, email, password} = req.body;
 
-    // register the user
-    const createdUser = await USER.create({
-        name: name,
-        email: email,
-        password: password
-    })
+    // // register the user
+    // const createdUser = await USER.create({
+    //     name: name,
+    //     email: email,
+    //     password: password
+    // })
 
-    res.status(201).json(createdUser);
+    // res.status(201).json(createdUser);
+  try {
+    res.send('Test response');
+  } catch (error) {
+    res.status(500).send('Error occurred');
+  }
 })
 
 app.listen(8000 , ()=> console.log("server started on 8000"))
