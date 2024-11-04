@@ -5,13 +5,13 @@ const cookieParser = require('cookie-parser')
 const mongoose= require('mongoose')
 const USER = require('./models/User')
 
-app.use(express.json())
-app.use(cookieParser())
 app.use(cors({
   credentials: true,  //allowing cookies to be sent
   origin: 'https://whole-slide-image-viewer-client.vercel.app',    //ORIGIN tells what app can communicate with API
   // origin: 'http://localhost:5173',    //ORIGIN tells what app can communicate with API
 }))
+app.use(express.json())
+app.use(cookieParser())
 
 mongoose
   .connect("mongodb+srv://aditisharma3711as:7JXDCn5mhckcNJmz@cluster0.uwg59.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
