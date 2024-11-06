@@ -7,7 +7,7 @@ const USER = require('./models/User')
 
 app.use(cors({
   credentials: true,  //allowing cookies to be sent
-  origin: '*',    //ORIGIN tells what app can communicate with API
+  origin: 'https://whole-slide-image-viewer-client.vercel.app',    //ORIGIN tells what app can communicate with API
   // origin: 'http://localhost:5173',    //ORIGIN tells what app can communicate with API
 }))
 app.use(express.json())
