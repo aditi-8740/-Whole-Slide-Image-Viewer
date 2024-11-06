@@ -23,31 +23,19 @@ app.get('/', function (req, res) {
 })
 
 app.post('/register', async (req,res)=>{
-  // try {
-  //   const {name, email, password} = req.body;
-  //   // register the user
+  try {
+    const {name, email, password} = req.body;
+    // Register the user
+    const createdUser = await USER.create({
+        name: name,
+        email: email,
+        password: password
+    })
+    res.status(201).json(createdUser);
     
-  //   console.time("User creation time");  
-  //   const createdUser = await USER.create({
-  //       name: name,
-  //       email: email,
-  //       password: password
-  //   })
-  //   console.timeEnd("User creation time");
-    
-  //   res.status(201).json(createdUser);
-    
-  // } catch (error) {
-  //   res.status(500).send('Error occurred');
-  // }
-
-   try {
-    const users = await USER.find().limit(1); // Fetch one user as a test
-    res.send('Database connection is working');
   } catch (error) {
-    console.error("Database connection error:", error);
-    res.status(500).send('Database connection error');
+    res.status(500).send('Error occurred');
   }
 })
 
-app.listen(8000 , ()=> console.log("server started on 8000"))
+app.listen(8000 , ()=> console.log("Server started on 8000"))
