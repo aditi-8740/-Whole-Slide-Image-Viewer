@@ -25,6 +25,7 @@ app.get('/', function (req, res) {
 
 app.post('/register', async (req,res)=>{
   try {
+    console.log('MONGODB_URL:', process.env.MONGODB_URL);
     const {name, email, password} = req.body;
     // Register the user
     const createdUser = await USER.create({
