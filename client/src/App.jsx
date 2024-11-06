@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { useState } from 'react'
 
-axios.defaults.baseURL = "https://whole-slide-image-viewer-server.vercel.app/"
+axios.defaults.baseURL = "https://whole-slide-image-viewer-server.vercel.app"
 // axios.defaults.baseURL = "http://localhost:8000"
+axios.defaults.withCredentials = true; // Ensure credentials are sent if needed
 
 function App() {
   const [name, setName] = useState('')
