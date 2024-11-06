@@ -25,13 +25,16 @@ app.get('/', function (req, res) {
 app.post('/register', async (req,res)=>{
   try {
     const {name, email, password} = req.body;
-
     // register the user
+    
+    console.time("User creation time");  
     const createdUser = await USER.create({
         name: name,
         email: email,
         password: password
     })
+    console.timeEnd("User creation time");
+    
     res.status(201).json(createdUser);
     
   } catch (error) {
