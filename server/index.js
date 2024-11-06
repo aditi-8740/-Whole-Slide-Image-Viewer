@@ -38,5 +38,8 @@ app.post('/register', async (req,res)=>{
     res.status(500).send('Error occurred');
   }
 })
+app.get('/health', (req, res) => {
+  res.status(200).send('Server is healthy');
+});
 
 app.listen(process.env.PORT , ()=> console.log(`Server started on ${process.env.PORT}`))
