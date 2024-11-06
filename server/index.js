@@ -23,18 +23,17 @@ app.get('/', function (req, res) {
 })
 
 app.post('/register', async (req,res)=>{
-    // const {name, email, password} = req.body;
-
-    // // register the user
-    // const createdUser = await USER.create({
-    //     name: name,
-    //     email: email,
-    //     password: password
-    // })
-
-    // res.status(201).json(createdUser);
   try {
-    res.send('Test response');
+    const {name, email, password} = req.body;
+
+    // register the user
+    const createdUser = await USER.create({
+        name: name,
+        email: email,
+        password: password
+    })
+    res.status(201).json(createdUser);
+    
   } catch (error) {
     res.status(500).send('Error occurred');
   }
