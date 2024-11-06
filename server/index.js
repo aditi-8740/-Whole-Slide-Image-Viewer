@@ -4,6 +4,7 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const mongoose= require('mongoose')
 const USER = require('./models/User')
+require('dotenv').config()
 
 app.use(cors({
   credentials: true,  //allowing cookies to be sent
@@ -14,7 +15,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 mongoose
-  .connect("mongodb+srv://aditisharma3711as:7JXDCn5mhckcNJmz@cluster0.uwg59.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log("MongoDB connection error: ", err));
 
@@ -38,4 +39,4 @@ app.post('/register', async (req,res)=>{
   }
 })
 
-app.listen(8000 , ()=> console.log("Server started on 8000"))
+app.listen(process.env.PORT , ()=> console.log(`Server started on ${process.env.PORT}`))
